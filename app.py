@@ -40,7 +40,6 @@ def processRequest(req):
         return {}
 
     url = 'http://5.186.52.135:1000/webhook'
-    r = requests.get(url)
 
     speech = "Hello World!"
     data = ""
