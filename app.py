@@ -40,11 +40,12 @@ def processRequest(req):
     if req.get("result").get("action") != "controlLight":
         return {}
 
-    url = 'http://5.186.52.135:1000/webhook/?'
+    url = 'http://5.186.52.135:1000/webhook'
     payload = {'key1': 'value1', 'key2': 'value2'}
+    data = json.dumps(payload, indent=4)
 
     # POST with JSON 
-    r = requests.post(url, data=json.dumps(payload))
+    r = requests.post(url, data)
 
     # Response, status etc
     r.text
