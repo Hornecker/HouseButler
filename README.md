@@ -10,7 +10,8 @@ More info about Api.ai webhooks could be found here:
 
 # What does the service do?
 It's a trigger fulfillment service without any information retrieval which uses a local Web API 2.0 (or any!) backend server to do some work when triggered.
-The service takes 3 parameters as action (@boolean-type, @subject-type, @location-type).
+The service takes 3 parameters (@boolean-type, @subject-type, @location-type).
 
 The action triggers a local lightbulb to turn on or off light ('light' is the @subject-type, 'on'/'off' is the @boolean-type and 'room' is the @location-type).
+
 The service packs the result in the Api.ai webhook-compatible response JSON and returns it to Api.ai.
