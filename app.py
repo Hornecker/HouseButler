@@ -43,19 +43,16 @@ def processRequest(req):
 
     # Action for controlling light received
     baseurl = "http://5.186.52.135:1000/webhook/?"
-    urlopen(baseurl)
     
-    #query = makeQuery(req)
-
-    #if query is None:
-    #    return {}
-
-    #url = baseurl + urlencode({'q': query}) + "&format=json"
-    #result = urlopen(url).read()
-    #data = json.loads(result)
-
-    res = makeWebhookResult(data)
-    return res
+    url = baseurl + "&format=json"
+    urlopen(url).read()
+    
+    return
+    {
+        "speech": "speech here",
+        "displayText": "speech here",
+        "source": "apiai-mybutler-lightcontrol-webhook"
+    }
 
 
 def makeQuery(req):
