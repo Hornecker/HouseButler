@@ -39,10 +39,17 @@ def processRequest(req):
     if req.get("result").get("action") != "controlLight":
         return {}
 
+    result = req.get("result")
+    parameters = result.get("parameters")
+
+    state = parameters.get("boolean-type")
+    room = parameters.get("location-type")
+    subject = parameters.get("subject-type")
+
     url = "http://5.186.52.135:1000/webhook"
     urlopen(url).read()
 
-    speech = "Hello World!"
+    speech = state + ", " + room + ", " + subject
     data = ""
 
     print("Response:")
