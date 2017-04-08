@@ -52,10 +52,16 @@ def processRequest(req):
     #data = response.read()
     #conn.close()
     
+    speech = "Hello World!"
+    data = ""
+
+    print("Response:")
+    print(speech)
+
     return
     {
-        "speech": "speech here",
-        "displayText": "speech here",
+        "speech": speech,
+        "displayText": speech,
         # "data": data,
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
