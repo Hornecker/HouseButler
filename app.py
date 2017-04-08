@@ -51,7 +51,7 @@ def processRequest(req):
     #urlopen(url).read()
 
     data = urllib.urlencode({"state": state, "room": room, "subject": subject})
-    content = urllib2.urlopen(url=url, data=data).read()
+    content = urlopen(url=url, data=data).read()
 
     speech = state + ", " + room + ", " + subject
     data = ""
