@@ -26,40 +26,71 @@ def webhook():
     print("Request:")
     print(json.dumps(req, indent=4))
 
-    # Build JSON result
     res = processRequest(req)
-    res = json.dumps(res, indent=4)
 
-    # Make response complient including json header
+    res = json.dumps(res, indent=4)
+    # print(res)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
-
     return r
 
 
 def processRequest(req):
     if req.get("result").get("action") != "controlLight":
         return {}
+    baseurl = "https://query.yahooapis.com/v1/public/yql?"
+    yql_query = makeYqlQuery(req)
+    if yql_query is None:
+        return {}
+    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+    result = urlopen(yql_url).read()
+    data = json.loads(result)
+    res = makeWebhookResult(data)
+    return res
 
-    # Action for controlling light received
-    baseurl = "http://5.186.52.135:1000/webhook/"
-    
-    #params = urllib.urlencode({'number': 12524, 'type': 'issue', 'action': 'show'})
-    #headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
-    #conn = httplib.HTTPConnection(baseurl)
-    #conn.request("POST", "", params, headers)
-    #response = conn.getresponse()
-    #data = response.read()
-    #conn.close()
-    
-    speech = "Hello World!"
-    data = ""
+
+def makeYqlQuery(req):
+    result = req.get("result")
+    parameters = result.get("parameters")
+    city = parameters.get("geo-city")
+    if city is None:
+        return None
+
+    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+
+
+def makeWebhookResult(data):
+    query = data.get('query')
+    if query is None:
+        return {}
+
+    result = query.get('results')
+    if result is None:
+        return {}
+
+    channel = result.get('channel')
+    if channel is None:
+        return {}
+
+    item = channel.get('item')
+    location = channel.get('location')
+    units = channel.get('units')
+    if (location is None) or (item is None) or (units is None):
+        return {}
+
+    condition = item.get('condition')
+    if condition is None:
+        return {}
+
+    # print(json.dumps(item, indent=4))
+
+    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
+             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
 
     print("Response:")
     print(speech)
 
-    return
-    {
+    return {
         "speech": speech,
         "displayText": speech,
         # "data": data,
@@ -68,23 +99,9 @@ def processRequest(req):
     }
 
 
-def makeQuery(req):
-    result = req.get("result")
-    parameters = result.get("parameters")
-
-    return "weather.forecast"
-
-
-def makeWebhookResult(data):
-    return
-    {
-        "speech": "speech here",
-        "displayText": "speech here",
-        "source": "apiai-mybutler-lightcontrol-webhook"
-    }
-
-
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
+
     print("Starting app on port %d" % port)
+
     app.run(debug=False, port=port, host='0.0.0.0')
