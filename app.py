@@ -42,12 +42,17 @@ def processRequest(req):
     result = req.get("result")
     parameters = result.get("parameters")
 
+    # Collect light control data
     state = parameters.get("boolean-type")
     room = parameters.get("location-type")
     subject = parameters.get("subject-type")
 
     url = "http://5.186.52.135:1000/webhook"
-    urlopen(url).read()
+    #urlopen(url).read()
+
+    data = {"state": state, "room": room, "subject": subject}
+    params = {'sessionKey': '9ebbd0b25760557393a43064a92bae539d962103', 'format': 'xml', 'platformId': 1}
+    requests.post(url, params=params, json=data)
 
     speech = state + ", " + room + ", " + subject
     data = ""
