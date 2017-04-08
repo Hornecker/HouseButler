@@ -8,6 +8,7 @@ from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
 
+import requests
 import json
 import os
 
@@ -38,6 +39,16 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "controlLight":
         return {}
+
+    url = 'http://5.186.52.135:1000/webhook/?'
+    payload = {'key1': 'value1', 'key2': 'value2'}
+
+    # POST with JSON 
+    r = requests.post(url, data=json.dumps(payload))
+
+    # Response, status etc
+    r.text
+    r.status_code
 
     speech = "Hello World!"
     data = ""
