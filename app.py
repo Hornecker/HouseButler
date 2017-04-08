@@ -40,6 +40,7 @@ def processRequest(req):
         return {}
 
     url = 'http://5.186.52.135:1000/webhook'
+    urllib.request.urlopen(url).read()
 
     speech = "Hello World!"
     data = ""
