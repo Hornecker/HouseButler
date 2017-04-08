@@ -51,8 +51,8 @@ def processRequest(req):
     #urlopen(url).read()
 
     data = {"state": state, "room": room, "subject": subject}
-    #data1 = json.dumps(data, indent=4)
-    urlopen(url=url, data=data).read()
+    jsondata = json.dumps(data, indent=4)
+    urlopen(url=url, data=jsondata).read()
 
     speech = state + ", " + room + ", " + subject
     data = ""
