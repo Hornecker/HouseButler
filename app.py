@@ -39,8 +39,8 @@ def processRequest(req):
     if req.get("result").get("action") != "controlLight":
         return {}
 
-    url = 'http://5.186.52.135:1000/webhook'
-    urllib.request.urlopen(url).read()
+    url = "http://5.186.52.135:1000/webhook"
+    urlopen(url).read()
 
     speech = "Hello World!"
     data = ""
