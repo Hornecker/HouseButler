@@ -42,10 +42,15 @@ def processRequest(req):
         return {}
 
     # Action for controlling light received
-    baseurl = "http://5.186.52.135:1000/webhook/?"
+    baseurl = "http://5.186.52.135:1000/webhook/"
     
-    url = baseurl + "&format=json"
-    urlopen(url).read()
+    params = urllib.urlencode({'number': 12524, 'type': 'issue', 'action': 'show'})
+    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
+    conn = httplib.HTTPConnection(baseurl)
+    conn.request("POST", "", params, headers)
+    response = conn.getresponse()
+    data = response.read()
+    conn.close()
     
     return
     {
