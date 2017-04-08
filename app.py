@@ -50,9 +50,8 @@ def processRequest(req):
     url = "http://5.186.52.135:1000/webhook"
     #urlopen(url).read()
 
-    data = {"state": state, "room": room, "subject": subject}
-    params = {'sessionKey': '9ebbd0b25760557393a43064a92bae539d962103', 'format': 'xml', 'platformId': 1}
-    requests.post(url, params=params, json=data)
+    data = urllib.urlencode({"state": state, "room": room, "subject": subject})
+    content = urllib2.urlopen(url=url, data=data).read()
 
     speech = state + ", " + room + ", " + subject
     data = ""
