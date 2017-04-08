@@ -1,0 +1,7 @@
+{
+  "name": "API.AI webhook light control",
+  "description": "API.AI webhook to control the light in my household",
+  "repository": "https://github.com/Hornecker/HouseButler",
+  "logo": "https://github.com/Hornecker/HouseButler/blob/master/apiai.png",
+  "keywords": ["api.ai", "natural language", "light control"]
+}
