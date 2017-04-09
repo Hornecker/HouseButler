@@ -55,11 +55,11 @@ def processRequest(req):
     urlopen(url).read()
 
     # Building response to API.AI backend
-    speech = "Ok, light " + state
+    speech = "Ok, light is " + state + " now"
     data = ""
 
-    # print("Response:")
-    # print(speech)
+    print("Response:")
+    print(speech)
 
     return
     {
