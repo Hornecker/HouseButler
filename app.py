@@ -54,13 +54,15 @@ def processRequest(req):
     url = "http://5.186.52.135:1000/webhook?state=" + state + "&room=" + room + "&subject=" + subject
     urlopen(url).read()
 
-    speech = "Turning " + state + " " + subject + " now"
+    # Building response to API.AI backend
+    speech = "Ok, light " + state
     data = ""
 
-    print("Response:")
-    print(speech)
+    # print("Response:")
+    # print(speech)
 
-    return {
+    return
+    {
         "speech": speech,
         "displayText": speech,
         # "data": data,
