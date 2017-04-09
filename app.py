@@ -51,8 +51,8 @@ def processRequest(req):
     #urlopen(url).read()
 
     data = { "state": state, "room": room, "subject": subject }
-    data1 = urllib.urlencode(data) 
-    urlopen("http://5.186.52.135:1000/webhook/", data1)
+    data1 = json.dumps(data, indent=4)
+    urlopen("http://5.186.52.135:1000/webhook/", data1).read()
 
     speech = "Turning " + state + " " + subject + " now"
     data = ""
