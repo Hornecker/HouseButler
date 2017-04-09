@@ -48,9 +48,9 @@ def processRequest(req):
     subject = parameters.get("subject-type")
 
     url = "http://5.186.52.135:1000/webhook?state=" + state + "&room=" + room + "&subject=" + subject
-    status = urlopen(url).read()
+    urlopen(url).read()
 
-    speech = "Result (" + status + "): " + state + ", " + room + ", " + subject
+    speech = state + ", " + room + ", " + subject
     data = ""
 
     print("Response:")
