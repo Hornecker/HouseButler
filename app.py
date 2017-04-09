@@ -47,8 +47,11 @@ def processRequest(req):
     room = parameters.get("location-type")
     subject = parameters.get("subject-type")
 
-    url = "http://5.186.52.135:1000/webhook?state=" + state + "&room=" + room + "&subject=" + subject
-    urlopen(url).read()
+    #url = "http://5.186.52.135:1000/webhook?state=" + state + "&room=" + room + "&subject=" + subject
+    #urlopen(url).read()
+
+    data = { "state": state, "room": room, "subject": subject }
+    urlopen("http://5.186.52.135:1000/webhook", data=data)
 
     speech = "Turning " + state + " " + subject + " now"
     data = ""
