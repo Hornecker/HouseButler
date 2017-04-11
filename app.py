@@ -55,7 +55,11 @@ def processRequest(req):
     urlopen(url).read()
 
     # Building response to API.AI backend
-    speech = "Ok, light is " + state + " now"
+    if state = "on":
+        speech = "Ok, light on"
+    else
+        speech = "Ok, light off"
+
     data = ""
 
     print("Response:")
@@ -75,5 +79,4 @@ if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
 
     print("Starting app on port %d" % port)
-
     app.run(debug=False, port=port, host='0.0.0.0')
