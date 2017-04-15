@@ -47,9 +47,9 @@ def processRequest(req):
     room = parameters.get("location-type")
     subject = parameters.get("subject-type")
 
-    state = state.replace(' ', '-')
-    room = room.replace(' ', '-')
-    subject = subject.replace(' ', '-')
+    #state = state.replace(' ', '-')
+    #room = room.replace(' ', '-')
+    #subject = subject.replace(' ', '-')
 
     url = "http://5.186.52.135:1000/webhook?state=" + state + "&room=" + room + "&subject=" + subject
     urlopen(url).read()
@@ -60,6 +60,7 @@ def processRequest(req):
     # else
         # speech = "Ok, light off"
 
+    speech = "Success"
     data = ""
 
     print("Response:")
