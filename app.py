@@ -22,16 +22,16 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
-
+    
     print("Request:")
     print(json.dumps(req, indent=4))
-
+    
     res = processRequest(req)
-
     res = json.dumps(res, indent=4)
-    # print(res)
+    
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
+    
     return r
 
 
@@ -47,14 +47,10 @@ def processRequest(req):
     room = parameters.get("location-type")
     subject = parameters.get("subject-type")
 
-	url = "http://5.186.52.135:1000/webhook?state=off&room=office&subject=light"
+	url = 'http://5.186.52.135:1000/webhook?state=' + state + '&room=' + room + '&subject=' + subject
     urlopen(url).read()
     
-	speech = "Success"
-    data = ""
-
-    print("Response:")
-    print(speech)
+    speech = "Success"
 
     return
     {
@@ -62,11 +58,10 @@ def processRequest(req):
         "displayText": speech,
         "source": "apiai-mybutler-lightcontrol"
     }
-
-
+    
 if __name__ == '__main__':
-	port = int(os.getenv('PORT', 5000))
+    port = int(os.getenv('PORT', 5000))
 
     print("Starting app on port %d" % port)
-
+    
     app.run(debug=False, port=port, host='0.0.0.0')
