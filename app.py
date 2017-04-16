@@ -56,11 +56,11 @@ def processRequest(req):
 
     # Building response to API.AI backend
     # if state = "on":
-        speech = "Ok, light on"
+        # speech = "Ok, light on"
     # else
         # speech = "Ok, light off"
 
-	speech = "Success"
+	speech = "Ok"
     data = ""
 
     print("Response:")
