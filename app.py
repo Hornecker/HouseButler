@@ -55,7 +55,7 @@ def processRequest(req):
     urlopen(url).read()
 
     # Building response to API.AI backend
-    speech = "Success"
+    speech = "Ok"
     data = ""
 
     print("Response:")
