@@ -29,9 +29,10 @@ def webhook():
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
-    # print(res)
+
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
+    
     return r
 
 
@@ -55,17 +56,17 @@ def processRequest(req):
     urlopen(url).read()
 
     # Building response to API.AI backend
-    speech = "Ok"
-    data = ""
+    # speech = "Ok"
+    # data = ""
 
-    print("Response:")
-    print(speech)
+    # print("Response:")
+    # print(speech)
 
     return
     {
-        "speech": speech,
-        "displayText": speech,
-        # "data": data,
+        "speech": "Success",
+        "displayText": "Success",
+        # "data": "",
         # "contextOut": [],
         "source": "apiai-mybutler-lightcontrol"
     }
