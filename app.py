@@ -47,21 +47,10 @@ def processRequest(req):
     room = parameters.get("location-type")
     subject = parameters.get("subject-type")
 
-    #state = state.replace(' ', '-')
-    #room = room.replace(' ', '-')
-    #subject = subject.replace(' ', '-')
-
-    #url = "http://5.186.52.135:1000/webhook?state=" + state + "&room=" + room + "&subject=" + subject
 	url = "http://5.186.52.135:1000/webhook?state=off&room=office&subject=light"
     urlopen(url).read()
-
-    # Building response to API.AI backend
-    # if state = "on":
-        # speech = "Ok, light on"
-    # else
-        # speech = "Ok, light off"
-
-	speech = "Ok"
+    
+	speech = "Success"
     data = ""
 
     print("Response:")
@@ -71,8 +60,6 @@ def processRequest(req):
     {
         "speech": speech,
         "displayText": speech,
-        # "data": data,
-        # "contextOut": [],
         "source": "apiai-mybutler-lightcontrol"
     }
 
