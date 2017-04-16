@@ -27,7 +27,6 @@ def webhook():
     print(json.dumps(req, indent=4))
 
     res = processRequest(req)
-
     res = json.dumps(res, indent=4)
 
     r = make_response(res)
@@ -56,7 +55,7 @@ def processRequest(req):
     result = urlopen(url).read()
 
     # Building response to API.AI backend
-    speech = result.get("result")
+    speech = json.dumps(result, indent=4)
 
     response = { "speech": speech, "displayText": speech, "source": "apiai-mybutler-lightcontrol" }
     return response
