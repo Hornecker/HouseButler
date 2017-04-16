@@ -55,11 +55,12 @@ def processRequest(req):
     urlopen(url).read()
 
     # Building response to API.AI backend
-    if state = "on":
-        speech = "Ok, light on"
-    else
-        speech = "Ok, light off"
+    #if state = "on":
+        #speech = "Ok, light on"
+    #else
+        #speech = "Ok, light off"
 
+	speech = "Success"
     data = ""
 
     print("Response:")
