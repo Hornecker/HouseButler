@@ -52,8 +52,6 @@ def processRequest(req):
     room = room.replace(' ', '-')
     subject = subject.replace(' ', '-')
 
-    response = { "speech": "Success", "displayText": "Success", "source": "apiai-mybutler-lightcontrol" }
-
     url = "http://5.186.52.135:1000/webhook?state=" + state + "&room=" + room + "&subject=" + subject
     urlopen(url).read()
 
@@ -64,6 +62,7 @@ def processRequest(req):
     # print("Response:")
     # print(speech)
 
+    response = { "speech": "Success", "displayText": "Success", "source": "apiai-mybutler-lightcontrol" }
     return response
 
 if __name__ == '__main__':
