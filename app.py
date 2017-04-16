@@ -53,14 +53,10 @@ def processRequest(req):
     subject = subject.replace(' ', '-')
 
     url = "http://5.186.52.135:1000/webhook?state=" + state + "&room=" + room + "&subject=" + subject
-    speech = urlopen(url).read()
+    result = urlopen(url).read()
 
     # Building response to API.AI backend
-    # speech = "Ok"
-    # data = ""
-
-    # print("Response:")
-    # print(speech)
+    speech = result.get("result")
 
     response = { "speech": speech, "displayText": speech, "source": "apiai-mybutler-lightcontrol" }
     return response
