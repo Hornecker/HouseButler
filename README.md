@@ -18,10 +18,10 @@ The service packs the result in the Api.ai webhook-compatible response JSON and 
 
 # Google Actions Privacy Policy
 What information do I collect?
-- Only data transmitted by the Action on Google API.AI is used at runtime. No logs are active, no post analysis of received data will be made. Nothing is collected at all!
+- Only data transmitted by the Action on Google API.AI is used at runtime. No logs are active, no post-analysis of received data. Nothing will be stored.
 
 How do I use the information?
-- The data transmitted by the Action on Google API.AI is used at runtime by a backend service to evaluate which power socket to turn on or off. After processing the information is lost. No data transmittet will be used for any other purpose that controlling power sockets.
+- The data transmitted by the Action on Google API.AI is used at runtime by a backend service to evaluate which power sockets to turn on or off. After processing the data, all information will be lost. The data transmittet will not be used for any other purpose that controlling power sockets.
 
 What information do I share?
-- The webhook collects the intent transmitted by the Action and passes it on to a local backend for processing the voice parameters. After processing, data is gone. Nothing is shared.
+- This webhook collects the intent transmitted by the Action and passes it on to my local backend service for processing the actual voice parameters. After processing, data is gone. Nothing is shared.
