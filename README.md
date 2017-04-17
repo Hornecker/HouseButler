@@ -15,3 +15,13 @@ The service takes 3 parameters (@boolean-type, @subject-type, @location-type).
 The action triggers a local lightbulb to turn on or off light ('light' is the @subject-type, 'on'/'off' is the @boolean-type and 'room' is the @location-type).
 
 The service packs the result in the Api.ai webhook-compatible response JSON and returns it to Api.ai.
+
+# Google Actions Privacy Policy
+What information do I collect?
+- Only data transmitted by the Action on Google API.AI is used at runtime. No logs are active, no analysis of received data will be made. Nothing is collected!
+
+How do I use the information?
+- The data transmitted by the Action on Google API.AI is used at runtime by a backend service to evaluate which power socket to turn on or off. After processing the information is lost. No data transmittet will be used for any other purpose that controlling power sockets.
+
+What information do I share?
+- The webhook collects the intent transmitted by the Action and passes it on to a local backend for processing the voice parameters. After processing, data is gone. Nothing is shared.
