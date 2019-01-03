@@ -51,7 +51,7 @@ def processRequest(req):
     room = room.replace(' ', '-')
     subject = subject.replace(' ', '-')
 
-    url = "http://5.186.52.135:1000/webhook?state=" + state + "&room=" + room + "&subject=" + subject
+    url = "http://xxx.xxx.xxx.xxx:nnnn/webhook?state=" + state + "&room=" + room + "&subject=" + subject
     speech = urlopen(url).read()
 
     # Cleaning up response to API.AI backend
